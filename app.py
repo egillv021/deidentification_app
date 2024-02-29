@@ -5,15 +5,15 @@ st.set_page_config(page_title="Deidentification", page_icon="🕵️‍♂️", 
 
 st.title('PII Masking App')
 
+language_option = st.sidebar.radio(
+    'Choose Language (select "Detect Language" for automatic detection):',
+    ["Detect Language", "en", "de"],
+    captions = ["", "English", "German"])
+
 if "text_transformer" not in st.session_state:
 # Initialize your TextTransformer
     st.session_state["text_transformer"]= TextTransformer()
 
-# Allow the user to choose a language or opt for automatic detection
-language_option = st.sidebar.selectbox(
-    'Choose Language (select "Detect Language" for automatic detection):',
-    ['Detect Language', 'en', 'de']  # Assuming 'en' and 'de' are the only supported languages for simplicity
-)
 col1, col2 = st.columns(2)
 with col1:
     # Text input from user
